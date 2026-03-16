@@ -1,7 +1,9 @@
 use dioxus::prelude::*;
+// use dioxus_logger::tracing;
 
 #[component]
 pub fn Education() -> Element {
+    let mut greetings = use_signal(|| String::from("Hello"));
     rsx! {
         section { id: "education", class: "py-24 px-6 bg-[#13151a]",
             div { class: "max-w-6xl mx-auto",
@@ -51,10 +53,11 @@ pub fn Education() -> Element {
                 }
 
                 div { class: "",
-                    p { "Mini Game" }
+                    p { "Greetings: {greetings}" }
                     button {
                         onclick: move |_| {
-                            println!("Button clicked!");
+                            *greetings.write() += " World!";
+                            // web_sys::console::log_1(&format!("{}", greetings()).into())
                         },
                         "Click Me"
                     }

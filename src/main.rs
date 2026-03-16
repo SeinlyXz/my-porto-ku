@@ -21,6 +21,7 @@ const FAVICON: Asset = asset!("/assets/favicon.ico");
 const TAILWIND_CSS: Asset = asset!("/assets/tailwind.css");
 
 fn main() {
+    // tracing_wasm::set_as_global_default();
     dioxus::launch(App);
 }
 
@@ -31,7 +32,7 @@ fn App() -> Element {
         document::Link { rel: "stylesheet", href: TAILWIND_CSS }
         document::Link {
             rel: "stylesheet",
-            href: "https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap"
+            href: "https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;600;700&family=Barlow:wght@300;400;500;600&family=Share+Tech+Mono&display=swap",
         }
         Router::<Route> {}
     }
