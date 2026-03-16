@@ -1,5 +1,6 @@
 use dioxus::prelude::*;
 
+#[derive(PartialEq, Clone, Props)]
 struct Job {
     company: &'static str,
     role: &'static str,
@@ -77,7 +78,7 @@ const JOBS: &[Job] = &[
 pub fn Experience() -> Element {
     rsx! {
         section { id: "experience", class: "py-24 px-6",
-            div { class: "max-w-4xl mx-auto",
+            div { class: "max-w-6xl mx-auto",
                 div { class: "font-mono text-amber-500 text-sm mb-8 tracking-widest",
                     "// 004 — WORK HISTORY"
                 }
@@ -86,34 +87,33 @@ pub fn Experience() -> Element {
                 }
                 div { class: "space-y-6",
                     for (i , job) in JOBS.iter().enumerate() {
-                        div { class: "group border border-gray-800 bg-[#13151a] p-6 hover:border-amber-500/50 transition-colors",
-                            div { class: "flex justify-between items-start mb-4 flex-wrap gap-2",
-                                div {
-                                    div { class: "flex items-center gap-3 mb-1",
-                                        span { class: "font-mono text-amber-500/50 text-xs",
-                                            {format!("{:02}", i + 1)}
-                                        }
-                                        h3 { class: "font-heading text-xl font-bold text-white",
-                                            "{job.company}"
-                                        }
-                                    }
-                                    p { class: "font-body text-gray-400 text-sm ml-7",
-                                        "{job.role} — {job.project}"
-                                    }
-                                }
-                                span { class: "font-mono text-xs text-gray-500 shrink-0",
-                                    "{job.period}"
-                                }
-                            }
-                            ul { class: "space-y-2 border-l border-gray-700 pl-4 ml-3",
-                                for detail in job.details.iter() {
-                                    li { class: "font-body text-gray-300 text-sm",
-                                        "{detail}"
-                                    }
-                                }
-                            }
-                        }
+                        ExperienceCard { i: i as i32, props: job.clone() }
                     }
+                }
+            }
+        }
+    }
+}
+
+#[component]
+fn ExperienceCard(i: i32, props: Job) -> Element {
+    rsx! {
+        div { class: "group border border-gray-800 bg-[#13151a] p-6 hover:border-amber-500/50 transition-colors",
+            div { class: "flex justify-between items-start mb-4 flex-wrap gap-2",
+                div {
+                    div { class: "flex items-center gap-3 mb-1",
+                        span { class: "font-mono text-amber-500/50 text-xs", {format!("{:02}", i + 1)} }
+                        h3 { class: "font-heading text-xl font-bold text-white", "{props.company}" }
+                    }
+                    p { class: "font-body text-gray-400 text-sm ml-7",
+                        "{props.role} — {props.project}"
+                    }
+                }
+                span { class: "font-mono text-xs text-gray-500 shrink-0", "{props.period}" }
+            }
+            ul { class: "space-y-2 border-l border-gray-700 pl-4 ml-3",
+                for detail in props.details.iter() {
+                    li { class: "font-body text-gray-300 text-sm", "{detail}" }
                 }
             }
         }

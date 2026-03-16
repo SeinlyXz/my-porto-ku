@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Education() -> Element {
     rsx! {
         section { id: "education", class: "py-24 px-6 bg-[#13151a]",
-            div { class: "max-w-4xl mx-auto",
+            div { class: "max-w-6xl mx-auto",
                 div { class: "font-mono text-amber-500 text-sm mb-8 tracking-widest",
                     "// 005 — CREDENTIALS"
                 }
@@ -47,6 +47,16 @@ pub fn Education() -> Element {
                                 "HackerRank — Jul 2023"
                             }
                         }
+                    }
+                }
+
+                div { class: "",
+                    p { "Mini Game" }
+                    button {
+                        onclick: move |_| {
+                            println!("Button clicked!");
+                        },
+                        "Click Me"
                     }
                 }
             }

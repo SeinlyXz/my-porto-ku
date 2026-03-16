@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn Footer() -> Element {
     rsx! {
         footer { class: "py-12 px-6 border-t border-gray-800",
-            div { class: "max-w-4xl mx-auto flex justify-between items-center flex-wrap gap-4",
+            div { class: "max-w-6xl mx-auto flex justify-between items-center flex-wrap gap-4",
                 p { class: "font-mono text-gray-500 text-xs tracking-wide",
                     "// 2026 MUHAMMAD SEINLY ASHVIYA"
                 }

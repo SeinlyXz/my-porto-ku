@@ -8,7 +8,7 @@ struct SkillCategory {
 const CATEGORIES: &[SkillCategory] = &[
     SkillCategory {
         label: "LANGUAGES",
-        skills: &["Go", "JavaScript", "PHP"],
+        skills: &["Rust", "Go", "JavaScript", "PHP", "Python"],
     },
     SkillCategory {
         label: "FRONTEND",
@@ -36,7 +36,7 @@ const CATEGORIES: &[SkillCategory] = &[
 pub fn Skills() -> Element {
     rsx! {
         section { id: "skills", class: "py-24 px-6 bg-[#13151a]",
-            div { class: "max-w-4xl mx-auto",
+            div { class: "max-w-6xl mx-auto",
                 div { class: "font-mono text-amber-500 text-sm mb-8 tracking-widest",
                     "// 003 — TECHNICAL ARSENAL"
                 }

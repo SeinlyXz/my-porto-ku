@@ -4,7 +4,7 @@ use dioxus::prelude::*;
 pub fn About() -> Element {
     rsx! {
         section { id: "about", class: "py-24 px-6",
-            div { class: "max-w-4xl mx-auto",
+            div { class: "max-w-6xl mx-auto",
                 div { class: "font-mono text-amber-500 text-sm mb-8 tracking-widest",
                     "// 002 — ABOUT"
                 }
